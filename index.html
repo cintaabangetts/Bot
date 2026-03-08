@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>FROSTWOLFSHADOWX PANEL BOT TELE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #0a1929, #0d2338);
+      color: #e0e0e0;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrapper {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      width: 260px;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      padding: 20px;
+      transition: width 0.3s ease;
+    }
+
+    .sidebar:hover {
+      width: 280px;
+    }
+
+    .sidebar .brand {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .sidebar .brand h2 {
+      font-size: 28px;
+      letter-spacing: 1px;
+      color: #ffffff;
+    }
+
+    .menu {
+      list-style: none;
+    }
+
+    .menu li {
+      padding: 14px 20px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+      display: flex;
+      align-items: center;
+      color: #e0f7ff;
+    }
+
+    .menu li i {
+      margin-right: 10px;
+    }
+
+    .menu li:hover,
+    .menu li.active {
+      background: rgba(66, 133, 244, 0.3);
+      transform: scale(1.03);
+    }
+
+    .main {
+      flex: 1;
+      background: #0a1929;
+      padding: 30px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    header h1 {
+      font-size: 36px;
+      animation: fadeIn 1s ease-in-out;
+      letter-spacing: 1px;
+      color: #4dabf7;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .content {
+      background: #1a365d;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 82, 204, 0.3);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: 600;
+      color: #a3d5ff;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      margin-bottom: 15px;
+      background: #2d3748;
+      color: #e0e0e0;
+      border: 1px solid #4299e1;
+    }
+
+    button {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      background: #3182ce;
+      color: #fff;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s ease, transform 0.2s ease;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+
+    button:hover {
+      background: #2b6cb0;
+      transform: translateY(-2px);
+    }
+
+    button:disabled {
+      background: #4a5568;
+      cursor: not-allowed;
+    }
+
+    .status {
+      margin-top: 20px;
+      padding: 15px;
+      background: #2d3748;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: 600;
+      border: 1px solid #4299e1;
+      color: #90cdf4;
+    }
+
+    .log {
+      background: #2d3748;
+      padding: 12px;
+      height: 220px;
+      overflow-y: auto;
+      border-radius: 8px;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-top: 10px;
+      border: 1px solid #4299e1;
+      color: #cbd5e0;
+    }
+
+    .button-group {
+      margin-top: 10px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #718096;
+    }
+
+    .toggle-switch {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .toggle-switch input {
+      display: none;
+    }
+
+    .toggle-switch label {
+      background: #4a5568;
+      width: 50px;
+      height: 26px;
+      border-radius: 15px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .toggle-switch label::after {
+      content: "";
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 20px;
+      height: 20px;
+      background: #4299e1;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .toggle-switch input:checked+label::after {
+      transform: translateX(24px);
+    }
+
+    h2 {
+      color: #63b3ed;
+      border-bottom: 2px solid #3182ce;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+
+    ul li {
+      color: #cbd5e0;
+      margin-bottom: 8px;
+    }
+
+    p {
+      color: #a0aec0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav class="sidebar">
+      <div class="brand">
+        <h2><i class="fa-solid fa-robot"></i> FROSTWOLFSHADOWX</h2>
+      </div>
+      <ul class="menu">
+        <li class="active" data-tab="dashboard"><i class="fa-solid fa-gauge"></i> Dashboard</li>
+        <li data-tab="token"><i class="fa-solid fa-key"></i> Token</li>
+        <li data-tab="settings"><i class="fa-solid fa-gear"></i> Settings</li>
+        <li data-tab="logs"><i class="fa-solid fa-clipboard-list"></i> Logs</li>
+      </ul>
+    </nav>
+    <div class="main">
+      <header>
+        <h1>FROSTWOLFSHADOWX PANEL BOT TELE</h1>
+      </header>
+      <div class="content">
+        <section class="tab-content active" id="dashboard">
+          <p>Kontrol bot lo dengan cepat dan cek status live secara real-time!</p>
+          <div class="button-group">
+            <button id="startBtn"><i class="fa-solid fa-play"></i> Start Bot</button>
+            <button disabled id="stopBtn"><i class="fa-solid fa-stop"></i> Stop Bot</button>
+            <button disabled id="restartBtn"><i class="fa-solid fa-rotate"></i> Restart Bot</button>
+          </div>
+          <div class="status" id="statusArea">Status: Idle</div>
+          <p style="margin-top:10px; font-style: italic;">Listening for /start command dari Telegram...</p>
+        </section>
+        <section class="tab-content" id="token">
+          <h2>Token Management</h2>
+          <label for="botToken">Masukkan Token Bot Telegram:</label>
+          <input id="botToken" placeholder="Token bot Telegram..." type="text" />
+          <div class="button-group">
+            <button id="saveTokenBtn"><i class="fa-solid fa-save"></i> Save &amp; Start</button>
+            <button disabled id="changeTokenBtn"><i class="fa-solid fa-edit"></i> Change Token</button>
+          </div>
+        </section>
+        <section class="tab-content" id="settings">
+          <h2>Settings</h2>
+          <label for="pingInterval">Ping Interval (ms):</label>
+          <input id="pingInterval" type="number" value="30000" />
+          <p>Setting tambahan bisa lo tambahin sesuai kebutuhan lo.</p>
+          <div class="toggle-switch">
+            <input id="darkModeToggle" type="checkbox" />
+            <label for="darkModeToggle"></label>
+            <span style="margin-left:10px;">Dark Mode</span>
+          </div>
+        </section>
+        <section class="tab-content" id="logs">
+          <h2>Logs</h2>
+          <div class="log" id="logArea"></div>
+          <button id="clearLogBtn"><i class="fa-solid fa-trash"></i> Clear Logs</button>
+        </section>
+      </div>
+      <footer>
+        FROSTWOLFSHADOWX PANEL BOT TELE.
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    const menuItems = document.querySelectorAll('.menu li');
+    const tabContents = document.querySelectorAll('.tab-content');
+    menuItems.forEach(item => {
+      item.addEventListener('click', () => {
+        menuItems.forEach(i => i.classList.remove('active'));
+        tabContents.forEach(tab => tab.classList.remove('active'));
+        item.classList.add('active');
+        document.getElementById(item.getAttribute('data-tab')).classList.add('active');
+      });
+    });
+
+    let botInterval = null;
+    let autoPollInterval = null;
+    let lastUpdateId = 0;
+    let totalRequests = 0;
+    let errorCount = 0;
+    let uptimeSeconds = 0;
+
+    const statusArea = document.getElementById('statusArea');
+    const logArea = document.getElementById('logArea');
+    const botTokenInput = document.getElementById('botToken');
+    const pingIntervalInput = document.getElementById('pingInterval');
+
+    const startBtn = document.getElementById('startBtn');
+    const stopBtn = document.getElementById('stopBtn');
+    const restartBtn = document.getElementById('restartBtn');
+    const saveTokenBtn = document.getElementById('saveTokenBtn');
+    const changeTokenBtn = document.getElementById('changeTokenBtn');
+    const clearLogBtn = document.getElementById('clearLogBtn');
+
+    function updateStatus(message) {
+      statusArea.textContent = "Status: " + message;
+      logMessage(message);
+    }
+
+    function logMessage(message) {
+      const time = new Date().toLocaleTimeString();
+      logArea.innerHTML += `<p>[${time}] ${message}</p>`;
+      logArea.scrollTop = logArea.scrollHeight;
+    }
+
+    function startBot() {
+      const token = botTokenInput.value.trim();
+      if (!token) {
+        alert("Token tidak boleh kosong!");
+        return;
+      }
+      localStorage.setItem('botToken', token);
+      updateStatus("Bot aktif...");
+      startBtn.disabled = true;
+      stopBtn.disabled = false;
+      restartBtn.disabled = false;
+      changeTokenBtn.disabled = false;
+      botTokenInput.disabled = true;
+
+      const pingInterval = parseInt(pingIntervalInput.value) || 30000;
+      botInterval = setInterval(() => {
+        totalRequests++;
+        fetch(`https://api.telegram.org/bot${token}/getMe`)
+          .then(response => response.json())
+          .then(data => {
+            if (data.ok) {
+              updateStatus("Bot berjalan dengan baik.");
+            } else {
+              errorCount++;
+              updateStatus("Error: " + data.description);
+            }
+          })
+          .catch(error => {
+            errorCount++;
+            updateStatus("Error: " + error.message);
+          });
+      }, pingInterval);
+
+      totalRequests++;
+      fetch(`https://api.telegram.org/bot${token}/getMe`)
+        .then(response => response.json())
+        .then(data => {
+          if (data.ok) {
+            updateStatus("Bot berjalan dengan baik.");
+          } else {
+            errorCount++;
+            updateStatus("Error: " + data.description);
+          }
+        })
+        .catch(error => {
+          errorCount++;
+          updateStatus("Error: " + error.message);
+        });
+
+      if (autoPollInterval) {
+        clearInterval(autoPollInterval);
+      }
+      autoPollInterval = setInterval(pollForStartCommand, 5000);
+    }
+
+    function stopBot() {
+      if (botInterval) {
+        clearInterval(botInterval);
+        botInterval = null;
+        updateStatus("Bot dihentikan.");
+        startBtn.disabled = false;
+        stopBtn.disabled = true;
+        restartBtn.disabled = true;
+        changeTokenBtn.disabled = true;
+        botTokenInput.disabled = false;
+      }
+      
+      if (autoPollInterval) {
+        clearInterval(autoPollInterval);
+        autoPollInterval = null;
+      }
+    }
+
+    function restartBot() {
+      stopBot();
+      startBot();
+      updateStatus("Bot di-restart.");
+    }
+
+    function changeToken() {
+      stopBot();
+      botTokenInput.disabled = false;
+      botTokenInput.focus();
+      updateStatus("Masukkan token baru dan klik Save & Start.");
+    }
+
+    function pollForStartCommand() {
+      const token = botTokenInput.value.trim();
+      if (!token) return;
+
+      let url = `https://api.telegram.org/bot${token}/getUpdates`;
+      if (lastUpdateId) { 
+        url += `?offset=${lastUpdateId + 1}`; 
+      }
+
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          if (data.ok && data.result) {
+            data.result.forEach(update => {
+              lastUpdateId = update.update_id;
+
+              if (update.message && update.message.text && update.message.text.trim() === "/start") {
+                const chatId = update.message.chat.id;
+                const keyboard = {
+                  inline_keyboard: [
+                    [
+                      { text: " Ambil Chat ID", callback_data: "get_chat_id" },
+                      { text: " Info Perangkat", callback_data: "device_info" },
+                      { text: "Waktu Bot", callback_data: "bot_uptime" }
+                    ],
+                    [
+                      { text: " Berita Terkini", callback_data: "latest_news" },
+                      { text: "cuaca", callback_data: "weather_info" }
+                    ],
+                    [
+                      { text: " Quote Inspiratif", callback_data: "inspirational_quote" },
+                      { text: " Tips Keamanan", callback_data: "security_tips" }
+                    ],
+                    [
+                      { text: "Tentang Bot", callback_data: "about_bot" },
+                      { text: "Server Status", callback_data: "server_status" }
+                    ],
+                    [
+                      { text: "antuan", callback_data: "help" },
+                      { text: " Hubungi Dev", callback_data: "contact_dev" }
+                    ]
+                  ]
+                };
+                const message = "Selamat datang di FROSTWOLFSHADOWX BOT TELEGRAM!\nPilih menu di bawah ini: ";
+                fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message,
+                    reply_markup: keyboard
+                  })
+                })
+                  .then(response => response.json())
+                  .then(replyData => {
+                    console.log("Menu sent:", replyData);
+                  })
+                  .catch(err => console.error("Error sending menu:", err));
+
+                if (!botInterval) {
+                  updateStatus("Perintah /start diterima. Bot diaktifkan.");
+                  startBot();
+                } else {
+                  logMessage("Perintah /start diterima, tapi bot sudah aktif.");
+                }
+              }
+
+              if (update.callback_query) {
+                let callbackData = update.callback_query.data;
+                let callbackChatId = update.callback_query.message.chat.id;
+                if (callbackData === "get_chat_id") {
+                  let msg = "Chat ID kamu adalah: " + callbackChatId;
+                  fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ chat_id: callbackChatId, text: msg })
+                  })
+                    .then(response => response.json()).then(data => console.log("Chat ID sent:", data))
+                    .catch(err => console.error(err));
+                } else if (callbackData === "device_info") {
+                  fetch("https://api.ipify.org?format=json")
+                    .then(response => response.json())
+                    .then(ipData => {
+                      let publicIP = ipData.ip;
+                      let deviceInfo = navigator.userAgent;
+                      let msg = `Device Info:
+Public IP: ${publicIP}
+Local IP: Unavailable
+Device: ${deviceInfo}`;
+                      return fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ chat_id: callbackChatId, text: msg })
+                      });
+                    })
+                    .catch(err => {
+                      console.error("Error fetching device info:", err);
+                      fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ chat_id: callbackChatId, text: "Error fetching device info" })
+                      });
+                    });
+                } else if (callbackData === "bot_uptime") {
+                  let msg = "Bot uptime: " + uptimeSeconds + " seconds.";
+                  fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ chat_id: callbackChatId, text: msg })
+                  })
+                    .then(response => response.json()).then(data => console.log("Uptime sent:", data))
+                    .catch(err => console.error(err));
+                } else if (callbackData === "latest_news") {
+                  let msg = "Berita Terkini: Fitur ini sedang dalam pengembangan. Tetap pantau update terbaru!";
+                  fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ chat_id: callbackChatId, text: msg })
+                  }).then(response => response.json()).then(data => console.log("Latest news sent:", data))
+                    .catch(err => console.error(err));
+                } else if (callbackData === "weather_info") {
+                  fetch("https://wttr.in/?format=3")
+                    .then(response => response.text())
+                    .then(weather => {
+                      let msg = "Cuaca saat ini: " + weather;
+                      fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ chat_id: callbackChatId, text: msg })
+                  }).then(response => response.json()).then(data => console.log("Cuaca sent:", data))
+                    .catch(err => console.error(err));
+                    })
+                    .catch(err => {
+                      fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ chat_id: callbackChatId, text: "Error fetching cuaca." })
+                      });
+                    });
+                } else if (callbackData === "inspirational_quote") {
+                  fetch("https://api.quotable.io/random")
+                    .then(response => response.json())
+                    .then(quoteData => {
+                      let msg = `Quote: "${quoteData.content}"
+- ${quoteData.author}`;
+                      fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ chat_id: callbackChatId, text: msg })
+                  }).then(response => response.json()).then(data => console.log("Quote sent:", data))
+                    .catch(err => console.error(err));
+                    })
+                    .catch(err => {
+                      fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ chat_id: callbackChatId, text: "Error fetching quote." })
+                      });
+                    });
+                } else if (callbackData === "security_tips") {
+                  let msg = `Tips Keamanan:
+1. Selalu update software.
+2. Gunakan VPN.
+3. Waspada phishing.
+4. Aktifkan 2FA.`;
+                  fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ chat_id: callbackChatId, text: msg })
+                  }).then(response => response.json()).then(data => console.log("Security tips sent:", data))
+                    .catch(err => console.error(err));
+                } else if (callbackData === "about_bot") {
+                  let msg = `Tentang Bot:
+FROSTWOLFSHADOWX PANEL BOT TELE - Kontrol bot Telegram dengan mudah.`;
+                  fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ chat_id: callbackChatId, text: msg })
+                  }).then(response => response.json()).then(data => console.log("About Bot sent:", data))
+                    .catch(err => console.error(err));
+                } else if (callbackData === "server_status") {
+                  let msg = `Server Status:
+Semua sistem berjalan normal.`;
+                  fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ chat_id: callbackChatId, text: msg })
+                  }).then(response => response.json()).then(data => console.log("Server status sent:", data))
+                    .catch(err => console.error(err));
+                } else if (callbackData === "help") {
+                  let msg = `Menu tersedia:
+1.  Ambil Chat ID
+2.  Info Perangkat
+3.  Waktu Bot
+4.  Berita Terkini
+5.  cuaca
+6.  Quote Inspiratif
+7.  Tips Keamanan
+8.  Tentang Bot
+9.  Server Status
+10. antuan
+11. Hubungi Dev`;
+                  fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ chat_id: callbackChatId, text: msg })
+                  }).then(response => response.json()).then(data => console.log("Help sent:", data))
+                    .catch(err => console.error(err));
+                } else if (callbackData === "contact_dev") {
+                  let msg = `Hubungi Developer:
+Telegram: t.me/cyphxsec`;
+                  fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ chat_id: callbackChatId, text: msg })
+                  }).then(response => response.json()).then(data => console.log("Contact info sent:", data))
+                    .catch(err => console.error(err));
+                }
+              }
+            });
+          }
+        })
+        .catch(err => console.error("Polling error:", err));
+    }
+
+    function clearLogs() { 
+      logArea.innerHTML = ""; 
+    }
+
+    window.addEventListener('load', () => {
+      const savedToken = localStorage.getItem('botToken');
+      if (savedToken) { 
+        botTokenInput.value = savedToken; 
+        startBot(); 
+      }
+      autoPollInterval = setInterval(pollForStartCommand, 5000);
+    });
+
+    startBtn.addEventListener('click', startBot);
+    stopBtn.addEventListener('click', stopBot);
+    restartBtn.addEventListener('click', restartBot);
+    saveTokenBtn.addEventListener('click', startBot);
+    changeTokenBtn.addEventListener('click', changeToken);
+    clearLogBtn.addEventListener('click', clearLogs);
+
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    darkModeToggle.addEventListener('change', () => {
+      document.body.style.background = darkModeToggle.checked ? "#0e0e0e" : "#0a1929";
+    });
+  </script>
+</body>
+</html>
